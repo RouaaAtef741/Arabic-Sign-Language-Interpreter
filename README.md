@@ -8,6 +8,8 @@ this project has 4 python files
 - Inference-classifier.py: is a python program that showcases the model's prediction, it's not a realistic implementation of the model. Use whatever you want for the GUI.
 - app.py: is the implementation flask api/server. I used this to integrate the model into a flutter app. (not included in the repository).
 
+The Noto_Naskh_Arabic folder includes afont that supports writting in arabic, this is used in the inference classifier to display the prediction in arabic.
+
 I will not be including the dataset that the model was trained on or the model file itself. The model needs to be trained on the python version of YOUR device or it won't work correctly this is a version compatability from the skcit-learn library.
 
 if you have any further questions about this let me know! Good Luck and Happy coding.
