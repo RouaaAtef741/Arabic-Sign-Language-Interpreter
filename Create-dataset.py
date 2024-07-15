@@ -1,8 +1,9 @@
-import os
+import os  #libraries
 import pickle
 import mediapipe as mp
 import cv2
 
+#initialixing mediapipe for easier access.
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
@@ -22,9 +23,10 @@ for dir_ in os.listdir(DATA_DIR):
             y_ = []
 
             img = cv2.imread(os.path.join(DATA_DIR, dir_, img_path))
-            img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) #mediapipe reads iamges in the rgb format so all images need to be converted.
 
             results = hands.process(img_rgb)
+            #checks for multiple hands in the image.
             if results.multi_hand_landmarks:
                 for hand_landmarks in results.multi_hand_landmarks:  
                     for landmark in hand_landmarks.landmark:
@@ -45,5 +47,6 @@ for dir_ in os.listdir(DATA_DIR):
 
 hands.close()
 
+# Creates the dataset file that the model will access to train on.
 with open('data.pickle', 'wb') as f:
     pickle.dump({'data': data, 'labels': labels}, f)
